@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from joblib import load
 
-# 1. LA FUNCIÓN OBLIGATORIA DEL PREPROCESADOR (No la quites, tu modelo la usa)
+# 1. LA FUNCIÓN OBLIGATORIA DEL PREPROCESADOR 
 def arreglar_pdays(X):
     X_nuevo = X.copy()
     if 'pdays' in X_nuevo.columns:
@@ -17,13 +17,13 @@ st.write("Esta aplicación utiliza un `Pipeline` completo de `scikit-learn` carg
 
 @st.cache_resource
 def load_pack():
-    # 2. Cargamos TU modelo real directamente
+  
     modelo_real = load("modelo_final.joblib")
     
-    # 3. Si el modelo se guardó como lista, extraemos el pipeline
+   
     pipeline = modelo_real[0] if isinstance(modelo_real, list) else modelo_real
     
-    # 4. Creamos los metadatos para que el código del profe pinte el formulario
+    
     feature_metadata = {
         "age": {"type": "numerical", "min": 18, "max": 100, "median": 30},
         "balance": {"type": "numerical", "min": -10000, "max": 100000, "median": 1000},
@@ -43,7 +43,7 @@ def load_pack():
         "poutcome": {"type": "categorical", "options": ["failure", "nonexistent", "success", "unknown", "other"]}
     }
     
-    # 5. Devolvemos el diccionario 
+ 
     return {
         "pipeline": pipeline,
         "feature_metadata": feature_metadata,
